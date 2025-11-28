@@ -34,7 +34,7 @@ class ScoreCard extends StatelessWidget {
               color: Colors.black.withValues(alpha: 0.04),
               blurRadius: 8,
               offset: const Offset(0, 4),
-            )
+            ),
           ],
         ),
         child: Row(
@@ -42,7 +42,7 @@ class ScoreCard extends StatelessWidget {
             _ScoreProgressCircle(
               value: data?.score ?? 0,
               progress: progress,
-              color: Colors.red,
+              color: Color(score.accentColor),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -51,43 +51,17 @@ class ScoreCard extends StatelessWidget {
                 children: [
                   Text(
                     score.title,
-                    style: CupertinoTheme.of(context)
-                        .textTheme
-                        .textStyle
+                    style: CupertinoTheme.of(context).textTheme.textStyle
                         .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    data?.date ?? '',
-                    style: CupertinoTheme.of(context)
-                        .textTheme
-                        .textStyle
-                        .copyWith(fontSize: 13, color: Colors.grey),
-                  ),
-                  const SizedBox(height: 8),
-                  _ProgressBar(progress: progress, color: Colors.red),
                 ],
               ),
             ),
-            const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  '${data?.score ?? '-'}',
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .navLargeTitleTextStyle
-                      .copyWith(fontSize: 22),
-                ),
-                Text(
-                  'of 100',
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .textStyle
-                      .copyWith(fontSize: 12, color: Colors.grey),
-                ),
-              ],
+            Icon(
+              CupertinoIcons.chevron_right,
+              color: CupertinoTheme.of(
+                context,
+              ).textTheme.textStyle.color?.withValues(alpha: 0.4),
             ),
           ],
         ),
@@ -120,48 +94,16 @@ class _ScoreProgressCircle extends StatelessWidget {
             strokeWidth: 6,
             backgroundColor: color.withValues(alpha: 0.1),
             valueColor: AlwaysStoppedAnimation<Color>(color),
+            strokeCap: StrokeCap.round,
           ),
         ),
         Text(
           '$value',
-          style: CupertinoTheme.of(context)
-              .textTheme
-              .textStyle
-              .copyWith(fontWeight: FontWeight.w600),
+          style: CupertinoTheme.of(
+            context,
+          ).textTheme.textStyle.copyWith(fontWeight: FontWeight.w600),
         ),
       ],
-    );
-  }
-}
-
-class _ProgressBar extends StatelessWidget {
-  const _ProgressBar({required this.progress, required this.color});
-
-  final double progress;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final width = constraints.maxWidth;
-          return SizedBox(
-            height: 8,
-            child: Stack(
-              children: [
-                Container(color: color.withValues(alpha: 0.12)),
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 250),
-                  width: width * progress.clamp(0, 1),
-                  color: color,
-                ),
-              ],
-            ),
-          );
-        },
-      ),
     );
   }
 }

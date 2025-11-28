@@ -125,7 +125,8 @@
               "displayValue": "84",
               "unit": "",
               "value": 84,
-              "icon": "bolt"
+              "icon": "bolt",
+              "showProgress": true
             },
             {
               "id": "activity",
@@ -133,7 +134,8 @@
               "displayValue": "66",
               "unit": "",
               "value": 66,
-              "icon": "flame"
+              "icon": "flame",
+              "showProgress": true
             }
           ],
           "infoMetrics": [
@@ -351,30 +353,33 @@
               "value": 75
             }
           ],
-          "metrics": [
+          "mainMetrics": [
             {
               "id": "sleep",
               "title": "Sleep",
-              "displayValue": "7 h 55 m",
+              "displayValue": "6 h 20 m",
               "unit": "h",
-              "value": 91,
-              "icon": "moon"
+              "value": 80,
+              "icon": "moon",
+              "showProgress": true
             },
             {
               "id": "resting_hr",
               "title": "Resting HR",
-              "displayValue": "52 bpm",
+              "displayValue": "70 bpm",
               "unit": "bpm",
-              "value": 82,
-              "icon": "heart"
+              "value": 70,
+              "icon": "heart",
+              "showProgress": true
             },
             {
               "id": "hrv",
               "title": "Overnight HRV",
-              "displayValue": "41 ms",
+              "displayValue": "70 ms",
               "unit": "ms",
-              "value": 71,
-              "icon": "waveform"
+              "value": 70,
+              "icon": "waveform",
+              "showProgress": true
             }
           ],
           "insights": [
@@ -599,38 +604,42 @@
               "value": 59
             }
           ],
-          "metrics": [
+          "mainMetrics": [
             {
               "id": "active_points",
               "title": "Active Points",
-              "displayValue": "21 pts",
+              "displayValue": "40 pts",
               "unit": "pts",
-              "value": 68,
-              "icon": "sparkles"
+              "value": 40,
+              "icon": "sparkles",
+              "showProgress": true
             },
             {
               "id": "steps",
               "title": "Steps",
-              "displayValue": "6120",
+              "displayValue": "40",
               "unit": "steps",
-              "value": 52,
-              "icon": "walk"
-            },
-            {
-              "id": "calories",
-              "title": "Active Calories",
-              "displayValue": "470 kcal",
-              "unit": "kcal",
-              "value": 54,
-              "icon": "flame_outline"
+              "value": 40,
+              "icon": "walk",
+              "showProgress": true
             },
             {
               "id": "move_hours",
               "title": "Move Hours",
-              "displayValue": "3.5 h",
+              "displayValue": "3 h",
               "unit": "h",
               "value": 50,
-              "icon": "clock"
+              "icon": "clock",
+              "showProgress": true
+            },
+            {
+              "id": "calories",
+              "title": "Active Calories",
+              "displayValue": "430 kcal",
+              "unit": "kcal",
+              "value": 48,
+              "icon": "flame_outline",
+              "showProgress": false
             }
           ],
           "insights": [
