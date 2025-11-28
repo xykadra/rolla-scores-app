@@ -1,0 +1,691 @@
+{
+  "scores": [
+    {
+      "id": 0,
+      "title": "Health Score",
+      "about": "Your Health Score brings rest and activity together into one number, showing how balanced your day is. It's the average of your Readiness and Activity scores.",
+      "metricInfo": [
+        {
+          "id": "readiness",
+          "title": "Readiness",
+          "description": "How prepared your body is for strain today.",
+          "icon": "bolt"
+        },
+        {
+          "id": "activity",
+          "title": "Activity",
+          "descriptiosn": "Movement and exertion compared to your baseline.",
+          "icon": "flame"
+        }
+      ],
+      "timeframes": {
+        "1D": {
+          "score": 57,
+          "subtitle": "16 Nov",
+          "history": [],
+          "metrics": [
+            {
+              "id": "readiness",
+              "title": "Readiness",
+              "displayValue": "83",
+              "unit": "",
+              "value": 83,
+              "icon": "bolt"
+            },
+            {
+              "id": "activity",
+              "title": "Activity",
+              "displayValue": "30",
+              "unit": "",
+              "value": 30,
+              "icon": "flame"
+            }
+          ],
+          "insights": [
+            "Lower HRV decreased readiness today"
+          ]
+        },
+        "7D": {
+          "score": 74,
+          "subtitle": "10 Nov - 16 Nov",
+          "averageLabel": "Daily Avg.",
+          "history": [
+            {
+              "label": "Mon",
+              "value": 90
+            },
+            {
+              "label": "Tue",
+              "value": 20
+            },
+            {
+              "label": "Wed",
+              "value": 65
+            },
+            {
+              "label": "Thu",
+              "value": 30
+            },
+            {
+              "label": "Fri",
+              "value": 96
+            },
+            {
+              "label": "Sat",
+              "value": 80
+            },
+            {
+              "label": "Sun",
+              "value": 87
+            }
+          ],
+          "metrics": [
+            {
+              "id": "readiness",
+              "title": "Readiness",
+              "displayValue": "84",
+              "unit": "",
+              "value": 84,
+              "icon": "bolt"
+            },
+            {
+              "id": "activity",
+              "title": "Activity",
+              "displayValue": "66",
+              "unit": "",
+              "value": 66,
+              "icon": "flame"
+            }
+          ],
+          "insights": [
+            "Consistent activity maintained balance"
+          ]
+        },
+        "30D": {
+          "score": 71,
+          "subtitle": "Past 30 days",
+          "averageLabel": "Monthly Avg.",
+          "history": [
+            {
+              "label": "Week 1",
+              "value": 72
+            },
+            {
+              "label": "Week 2",
+              "value": 70
+            },
+            {
+              "label": "Week 3",
+              "value": 69
+            },
+            {
+              "label": "Week 4",
+              "value": 74
+            }
+          ],
+          "metrics": [
+            {
+              "id": "readiness",
+              "title": "Readiness",
+              "displayValue": "79",
+              "unit": "",
+              "value": 79,
+              "icon": "bolt"
+            },
+            {
+              "id": "activity",
+              "title": "Activity",
+              "displayValue": "64",
+              "unit": "",
+              "value": 64,
+              "icon": "flame"
+            }
+          ],
+          "insights": [
+            "Activity trend softened this month"
+          ]
+        },
+        "1Y": {
+          "score": 69,
+          "subtitle": "2024",
+          "averageLabel": "Yearly Avg.",
+          "history": [
+            {
+              "label": "Q1",
+              "value": 70
+            },
+            {
+              "label": "Q2",
+              "value": 68
+            },
+            {
+              "label": "Q3",
+              "value": 71
+            },
+            {
+              "label": "Q4",
+              "value": 67
+            }
+          ],
+          "metrics": [
+            {
+              "id": "readiness",
+              "title": "Readiness",
+              "displayValue": "75",
+              "unit": "",
+              "value": 75,
+              "icon": "bolt"
+            },
+            {
+              "id": "activity",
+              "title": "Activity",
+              "displayValue": "61",
+              "unit": "",
+              "value": 61,
+              "icon": "flame"
+            }
+          ],
+          "insights": [
+            "Sleep regularity improved yearly"
+          ]
+        }
+      }
+    },
+    {
+      "id": 1,
+      "title": "Readiness",
+      "about": "Your readiness score highlights recovery, stress, and sleep balance so you can plan strain for the day.",
+      "metricInfo": [
+        {
+          "id": "sleep",
+          "title": "Sleep",
+          "description": "Time and quality you spent sleeping.",
+          "icon": "moon"
+        },
+        {
+          "id": "resting_hr",
+          "title": "Resting HR",
+          "description": "Average resting heart rate during the night.",
+          "icon": "heart"
+        },
+        {
+          "id": "hrv",
+          "title": "HRV",
+          "description": "Heart rate variability indicating recovery.",
+          "icon": "waveform"
+        }
+      ],
+      "timeframes": {
+        "1D": {
+          "score": 83,
+          "subtitle": "16 Nov",
+          "history": [],
+          "metrics": [
+            {
+              "id": "sleep",
+              "title": "Sleep",
+              "displayValue": "8 h 40 m",
+              "unit": "h",
+              "value": 100,
+              "icon": "moon"
+            },
+            {
+              "id": "resting_hr",
+              "title": "Resting HR",
+              "displayValue": "51 bpm",
+              "unit": "bpm",
+              "value": 84,
+              "icon": "heart"
+            },
+            {
+              "id": "hrv",
+              "title": "Overnight HRV",
+              "displayValue": "39 ms",
+              "unit": "ms",
+              "value": 66,
+              "icon": "waveform"
+            }
+          ],
+          "insights": [
+            "Lower HRV decreased readiness today"
+          ]
+        },
+        "7D": {
+          "score": 78,
+          "subtitle": "10 Nov - 16 Nov",
+          "averageLabel": "Daily Avg.",
+          "history": [
+            {
+              "label": "Mon",
+              "value": 82
+            },
+            {
+              "label": "Tue",
+              "value": 78
+            },
+            {
+              "label": "Wed",
+              "value": 80
+            },
+            {
+              "label": "Thu",
+              "value": 77
+            },
+            {
+              "label": "Fri",
+              "value": 79
+            },
+            {
+              "label": "Sat",
+              "value": 74
+            },
+            {
+              "label": "Sun",
+              "value": 75
+            }
+          ],
+          "metrics": [
+            {
+              "id": "sleep",
+              "title": "Sleep",
+              "displayValue": "7 h 55 m",
+              "unit": "h",
+              "value": 91,
+              "icon": "moon"
+            },
+            {
+              "id": "resting_hr",
+              "title": "Resting HR",
+              "displayValue": "52 bpm",
+              "unit": "bpm",
+              "value": 82,
+              "icon": "heart"
+            },
+            {
+              "id": "hrv",
+              "title": "Overnight HRV",
+              "displayValue": "41 ms",
+              "unit": "ms",
+              "value": 71,
+              "icon": "waveform"
+            }
+          ],
+          "insights": [
+            "Steady sleep maintained readiness"
+          ]
+        },
+        "30D": {
+          "score": 76,
+          "subtitle": "Past 30 days",
+          "averageLabel": "Daily Avg.",
+          "history": [
+            {
+              "label": "Week 1",
+              "value": 77
+            },
+            {
+              "label": "Week 2",
+              "value": 75
+            },
+            {
+              "label": "Week 3",
+              "value": 74
+            },
+            {
+              "label": "Week 4",
+              "value": 78
+            }
+          ],
+          "metrics": [
+            {
+              "id": "sleep",
+              "title": "Sleep",
+              "displayValue": "7 h 40 m",
+              "unit": "h",
+              "value": 86,
+              "icon": "moon"
+            },
+            {
+              "id": "resting_hr",
+              "title": "Resting HR",
+              "displayValue": "52 bpm",
+              "unit": "bpm",
+              "value": 80,
+              "icon": "heart"
+            },
+            {
+              "id": "hrv",
+              "title": "Overnight HRV",
+              "displayValue": "40 ms",
+              "unit": "ms",
+              "value": 69,
+              "icon": "waveform"
+            }
+          ],
+          "insights": [
+            "Sleep regularity is improving"
+          ]
+        },
+        "1Y": {
+          "score": 75,
+          "subtitle": "2024",
+          "averageLabel": "Daily Avg.",
+          "history": [
+            {
+              "label": "Q1",
+              "value": 74
+            },
+            {
+              "label": "Q2",
+              "value": 75
+            },
+            {
+              "label": "Q3",
+              "value": 76
+            },
+            {
+              "label": "Q4",
+              "value": 75
+            }
+          ],
+          "metrics": [
+            {
+              "id": "sleep",
+              "title": "Sleep",
+              "displayValue": "7 h 25 m",
+              "unit": "h",
+              "value": 82,
+              "icon": "moon"
+            },
+            {
+              "id": "resting_hr",
+              "title": "Resting HR",
+              "displayValue": "53 bpm",
+              "unit": "bpm",
+              "value": 78,
+              "icon": "heart"
+            },
+            {
+              "id": "hrv",
+              "title": "Overnight HRV",
+              "displayValue": "38 ms",
+              "unit": "ms",
+              "value": 66,
+              "icon": "waveform"
+            }
+          ],
+          "insights": [
+            "HRV trending up year over year"
+          ]
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Activity",
+      "about": "Activity score tracks how much you moved compared to your baseline.",
+      "metricInfo": [
+        {
+          "id": "active_points",
+          "title": "Active Points",
+          "description": "Points for time spent moving at different intensities.",
+          "icon": "sparkles"
+        },
+        {
+          "id": "steps",
+          "title": "Steps",
+          "description": "Total steps captured for the time window.",
+          "icon": "walk"
+        },
+        {
+          "id": "calories",
+          "title": "Active Calories",
+          "description": "Calories burned through movement and exercise.",
+          "icon": "flame_outline"
+        },
+        {
+          "id": "move_hours",
+          "title": "Move Hours",
+          "description": "Hours with meaningful movement.",
+          "icon": "clock"
+        }
+      ],
+      "timeframes": {
+        "1D": {
+          "score": 66,
+          "subtitle": "16 Nov",
+          "history": [],
+          "metrics": [
+            {
+              "id": "active_points",
+              "title": "Active Points",
+              "displayValue": "19 pts",
+              "unit": "pts",
+              "value": 65,
+              "icon": "sparkles"
+            },
+            {
+              "id": "steps",
+              "title": "Steps",
+              "displayValue": "1852",
+              "unit": "steps",
+              "value": 26,
+              "icon": "walk"
+            },
+            {
+              "id": "calories",
+              "title": "Active Calories",
+              "displayValue": "430 kcal",
+              "unit": "kcal",
+              "value": 48,
+              "icon": "flame_outline"
+            },
+            {
+              "id": "move_hours",
+              "title": "Move Hours",
+              "displayValue": "3 h",
+              "unit": "h",
+              "value": 48,
+              "icon": "clock"
+            }
+          ],
+          "insights": [
+            "Afternoon walk boosted activity"
+          ]
+        },
+        "7D": {
+          "score": 64,
+          "subtitle": "10 Nov - 16 Nov",
+          "averageLabel": "Daily Avg.",
+          "history": [
+            {
+              "label": "Mon",
+              "value": 68
+            },
+            {
+              "label": "Tue",
+              "value": 66
+            },
+            {
+              "label": "Wed",
+              "value": 64
+            },
+            {
+              "label": "Thu",
+              "value": 63
+            },
+            {
+              "label": "Fri",
+              "value": 65
+            },
+            {
+              "label": "Sat",
+              "value": 61
+            },
+            {
+              "label": "Sun",
+              "value": 59
+            }
+          ],
+          "metrics": [
+            {
+              "id": "active_points",
+              "title": "Active Points",
+              "displayValue": "21 pts",
+              "unit": "pts",
+              "value": 68,
+              "icon": "sparkles"
+            },
+            {
+              "id": "steps",
+              "title": "Steps",
+              "displayValue": "6120",
+              "unit": "steps",
+              "value": 52,
+              "icon": "walk"
+            },
+            {
+              "id": "calories",
+              "title": "Active Calories",
+              "displayValue": "470 kcal",
+              "unit": "kcal",
+              "value": 54,
+              "icon": "flame_outline"
+            },
+            {
+              "id": "move_hours",
+              "title": "Move Hours",
+              "displayValue": "3.5 h",
+              "unit": "h",
+              "value": 50,
+              "icon": "clock"
+            }
+          ],
+          "insights": [
+            "Weekend slowdown lowered the average"
+          ]
+        },
+        "30D": {
+          "score": 63,
+          "subtitle": "Past 30 days",
+          "averageLabel": "Daily Avg.",
+          "history": [
+            {
+              "label": "Week 1",
+              "value": 64
+            },
+            {
+              "label": "Week 2",
+              "value": 62
+            },
+            {
+              "label": "Week 3",
+              "value": 63
+            },
+            {
+              "label": "Week 4",
+              "value": 65
+            }
+          ],
+          "metrics": [
+            {
+              "id": "active_points",
+              "title": "Active Points",
+              "displayValue": "20 pts",
+              "unit": "pts",
+              "value": 64,
+              "icon": "sparkles"
+            },
+            {
+              "id": "steps",
+              "title": "Steps",
+              "displayValue": "5980",
+              "unit": "steps",
+              "value": 50,
+              "icon": "walk"
+            },
+            {
+              "id": "calories",
+              "title": "Active Calories",
+              "displayValue": "455 kcal",
+              "unit": "kcal",
+              "value": 52,
+              "icon": "flame_outline"
+            },
+            {
+              "id": "move_hours",
+              "title": "Move Hours",
+              "displayValue": "3.2 h",
+              "unit": "h",
+              "value": 49,
+              "icon": "clock"
+            }
+          ],
+          "insights": [
+            "Shorter walks reduced active calories"
+          ]
+        },
+        "1Y": {
+          "score": 65,
+          "subtitle": "2024",
+          "averageLabel": "Daily Avg.",
+          "history": [
+            {
+              "label": "Q1",
+              "value": 63
+            },
+            {
+              "label": "Q2",
+              "value": 64
+            },
+            {
+              "label": "Q3",
+              "value": 65
+            },
+            {
+              "label": "Q4",
+              "value": 66
+            }
+          ],
+          "metrics": [
+            {
+              "id": "active_points",
+              "title": "Active Points",
+              "displayValue": "22 pts",
+              "unit": "pts",
+              "value": 68,
+              "icon": "sparkles"
+            },
+            {
+              "id": "steps",
+              "title": "Steps",
+              "displayValue": "6200",
+              "unit": "steps",
+              "value": 53,
+              "icon": "walk"
+            },
+            {
+              "id": "calories",
+              "title": "Active Calories",
+              "displayValue": "480 kcal",
+              "unit": "kcal",
+              "value": 55,
+              "icon": "flame_outline"
+            },
+            {
+              "id": "move_hours",
+              "title": "Move Hours",
+              "displayValue": "3.6 h",
+              "unit": "h",
+              "value": 51,
+              "icon": "clock"
+            }
+          ],
+          "insights": [
+            "More consistent weekday walks"
+          ]
+        }
+      }
+    }
+  ]
+}
