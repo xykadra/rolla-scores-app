@@ -20,27 +20,33 @@ class MetricTile extends StatelessWidget {
       metric.icon,
       fallbackKey: metric.id,
     );
-    final iconColor = metric.hasData ? color : CupertinoColors.inactiveGray;
+    final iconColor = MetricIconMapper.colorFor(
+      metric.icon,
+      fallbackKey: metric.id,
+    );
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12.0),
+      padding: const EdgeInsets.only(
+        bottom: 12.0,
+      ), // TODO: All tiles should have padding except last one
       child: Container(
+        height: 56,
         decoration: BoxDecoration(
           color: CupertinoTheme.of(context).barBackgroundColor,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: CupertinoColors.systemGrey4),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(top: 12, left: 8, right: 8),
+          padding: const EdgeInsets.only(top: 12, left: 12, right: 12),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      Icon(iconData, size: 22, color: iconColor),
+                      Icon(iconData, size: 20, color: iconColor),
                       const SizedBox(width: 6),
                       Text(
                         metric.title,
@@ -48,7 +54,7 @@ class MetricTile extends StatelessWidget {
                           context,
                         ).textTheme.textStyle.copyWith(
                           fontSize: 16,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                     ],
@@ -56,11 +62,11 @@ class MetricTile extends StatelessWidget {
                   Text(
                     metric.displayValue,
                     style: CupertinoTheme.of(context).textTheme.textStyle
-                        .copyWith(fontSize: 15, fontWeight: FontWeight.w600),
+                        .copyWith(fontSize: 16, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
+              Spacer(flex: 3,),
               _CupertinoProgress(
                 value: metric.hasData ? metric.value / 100 : 0,
                 color: color,
@@ -83,7 +89,7 @@ class _CupertinoProgress extends StatelessWidget {
   Widget build(BuildContext context) {
     final safeValue = value.clamp(0.0, 1.0);
     return SizedBox(
-      height: 5,
+      height: 3,
       child: Stack(
         children: [
           Container(

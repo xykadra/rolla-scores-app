@@ -58,7 +58,7 @@ class ScoreCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    data?.subtitle ?? '',
+                    data?.date ?? '',
                     style: CupertinoTheme.of(context)
                         .textTheme
                         .textStyle

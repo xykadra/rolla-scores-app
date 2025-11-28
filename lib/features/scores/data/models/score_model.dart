@@ -6,13 +6,12 @@ class ScoreModel extends Score {
     required super.id,
     required super.title,
     required super.about,
+    required super.accentColor,
     required super.timeframes,
-    required super.metricInfo,
   });
 
   factory ScoreModel.fromJson(Map<String, dynamic> json) {
     final timeframesJson = json['timeframes'] as Map<String, dynamic>? ?? {};
-    final metricInfoJson = json['metricInfo'] as List<dynamic>? ?? [];
 
     final timeframes = <Timeframe, ScoreTimeframeData>{};
     timeframesJson.forEach((key, value) {
@@ -22,21 +21,20 @@ class ScoreModel extends Score {
       );
     });
 
-    final metricInfo =
-        metricInfoJson
-            .map(
-              (info) =>
-                  MetricDefinitionModel.fromJson(info as Map<String, dynamic>),
-            )
-            .toList();
-
     return ScoreModel(
       id: (json['id'] as int?) ?? 0,
       title: (json['title'] as String?) ?? 'Score',
       about: (json['about'] as String?) ?? '',
       timeframes: timeframes,
-      metricInfo: metricInfo,
+      accentColor: _parseColor(json['color'] as String?),
     );
+  }
+
+  static int _parseColor(String? hex) {
+    if (hex == null || hex.isEmpty) return 0xFF4CAF50;
+    var value = hex.replaceAll('#', '');
+    if (value.length == 6) value = 'FF$value';
+    return int.tryParse(value, radix: 16) ?? 0xFF4CAF50;
   }
 }
 
@@ -85,21 +83,23 @@ class MetricModel extends Metric {
 class ScoreTimeframeDataModel extends ScoreTimeframeData {
   const ScoreTimeframeDataModel({
     required super.score,
-    required super.subtitle,
+    required super.date,
     required super.history,
-    required super.metrics,
+    required super.mainMetrics,
+    required super.infoMetrics,
     required super.insights,
     super.averageLabel,
   });
 
   factory ScoreTimeframeDataModel.fromJson(Map<String, dynamic> json) {
     final historyJson = json['history'] as List<dynamic>? ?? [];
-    final metricsJson = json['metrics'] as List<dynamic>? ?? [];
+    final mainMetricsJson = json['mainMetrics'] as List<dynamic>? ?? [];
+    final infoMetricsJson = json['infoMetrics'] as List<dynamic>? ?? [];
     final insightsJson = json['insights'] as List<dynamic>? ?? [];
 
     return ScoreTimeframeDataModel(
       score: json['score'] as int? ?? 0,
-      subtitle: json['subtitle'] as String? ?? '',
+      date: (json['date'] as String?) ?? (json['subtitle'] as String?) ?? '',
       averageLabel: json['averageLabel'] as String?,
       history:
           historyJson
@@ -112,8 +112,12 @@ class ScoreTimeframeDataModel extends ScoreTimeframeData {
                 ),
               )
               .toList(),
-      metrics:
-          metricsJson
+      mainMetrics:
+          mainMetricsJson
+              .map((item) => MetricModel.fromJson(item as Map<String, dynamic>))
+              .toList(),
+      infoMetrics:
+          infoMetricsJson
               .map((item) => MetricModel.fromJson(item as Map<String, dynamic>))
               .toList(),
       insights: insightsJson.cast<String>(),

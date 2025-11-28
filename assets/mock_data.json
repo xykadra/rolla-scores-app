@@ -2,28 +2,15 @@
   "scores": [
     {
       "id": 0,
-      "title": "Health Score",
+      "title": "Health",
       "about": "Your Health Score brings rest and activity together into one number, showing how balanced your day is. It's the average of your Readiness and Activity scores.",
-      "metricInfo": [
-        {
-          "id": "readiness",
-          "title": "Readiness",
-          "description": "How prepared your body is for strain today.",
-          "icon": "bolt"
-        },
-        {
-          "id": "activity",
-          "title": "Activity",
-          "descriptiosn": "Movement and exertion compared to your baseline.",
-          "icon": "flame"
-        }
-      ],
+      "color": "#4CAF50",
       "timeframes": {
         "1D": {
           "score": 57,
-          "subtitle": "16 Nov",
+          "date": "16 Nov",
           "history": [],
-          "metrics": [
+          "mainMetrics":[
             {
               "id": "readiness",
               "title": "Readiness",
@@ -35,10 +22,60 @@
             {
               "id": "activity",
               "title": "Activity",
-              "displayValue": "30",
+              "displayValue": "66",
               "unit": "",
-              "value": 30,
+              "value": 66,
               "icon": "flame"
+            }
+          ],
+          "infoMetrics": [
+            {
+              "id": "sleep",
+              "title": "Sleep",
+              "displayValue": "8 h 40 m",
+              "unit": "h",
+              "value": 100,
+              "icon": "moon"
+            },
+            {
+              "id": "resting_hr",
+              "title": "Resting HR",
+              "displayValue": "51 bpm",
+              "unit": "bpm",
+              "value": 84,
+              "icon": "heart"
+            },
+            {
+              "id": "hrv",
+              "title": "Overnight HRV",
+              "displayValue": "39 ms",
+              "unit": "ms",
+              "value": 66,
+              "icon": "waveform"
+            },
+            {
+              "id": "active_points",
+              "title": "Active Points",
+              "displayValue": "21 pts",
+              "unit": "pts",
+              "value": 68,
+              "icon": "sparkles"
+            },
+            {
+              "id": "steps",
+              "title": "Steps",
+              "displayValue": "6120",
+              "unit": "steps",
+              "value": 52,
+              "icon": "walk"
+            },
+            {
+              "id": "move_hours",
+              "title": "Move Hours",
+              "displayValue": "3.5 h",
+              "unit": "h",
+              "value": 50,
+              "icon": "clock"
             }
           ],
           "insights": [
@@ -47,7 +84,7 @@
         },
         "7D": {
           "score": 74,
-          "subtitle": "10 Nov - 16 Nov",
+          "date": "10 Nov - 16 Nov",
           "averageLabel": "Daily Avg.",
           "history": [
             {
@@ -79,7 +116,25 @@
               "value": 87
             }
           ],
-          "metrics": [
+          "mainMetrics":[
+            {
+              "id": "readiness",
+              "title": "Readiness",
+              "displayValue": "84",
+              "unit": "",
+              "value": 84,
+              "icon": "bolt"
+            },
+            {
+              "id": "activity",
+              "title": "Activity",
+              "displayValue": "66",
+              "unit": "",
+              "value": 66,
+              "icon": "flame"
+            }
+          ],
+          "infoMetrics": [
             {
               "id": "readiness",
               "title": "Readiness",
@@ -103,7 +158,7 @@
         },
         "30D": {
           "score": 71,
-          "subtitle": "Past 30 days",
+          "date": "Past 30 days",
           "averageLabel": "Monthly Avg.",
           "history": [
             {
@@ -147,7 +202,7 @@
         },
         "1Y": {
           "score": 69,
-          "subtitle": "2024",
+          "date": "2024",
           "averageLabel": "Yearly Avg.",
           "history": [
             {
@@ -195,32 +250,39 @@
       "id": 1,
       "title": "Readiness",
       "about": "Your readiness score highlights recovery, stress, and sleep balance so you can plan strain for the day.",
-      "metricInfo": [
-        {
-          "id": "sleep",
-          "title": "Sleep",
-          "description": "Time and quality you spent sleeping.",
-          "icon": "moon"
-        },
-        {
-          "id": "resting_hr",
-          "title": "Resting HR",
-          "description": "Average resting heart rate during the night.",
-          "icon": "heart"
-        },
-        {
-          "id": "hrv",
-          "title": "HRV",
-          "description": "Heart rate variability indicating recovery.",
-          "icon": "waveform"
-        }
-      ],
+      "color": "#7C4DFF",
       "timeframes": {
         "1D": {
           "score": 83,
-          "subtitle": "16 Nov",
+          "date": "16 Nov",
           "history": [],
-          "metrics": [
+          "mainMetrics": [
+            {
+              "id": "sleep",
+              "title": "Sleep",
+              "displayValue": "8 h 40 m",
+              "unit": "h",
+              "value": 100,
+              "icon": "moon"
+            },
+            {
+              "id": "resting_hr",
+              "title": "Resting HR",
+              "displayValue": "51 bpm",
+              "unit": "bpm",
+              "value": 84,
+              "icon": "heart"
+            },
+            {
+              "id": "hrv",
+              "title": "Overnight HRV",
+              "displayValue": "39 ms",
+              "unit": "ms",
+              "value": 66,
+              "icon": "waveform"
+            }
+          ],
+          "infoMetrics": [
             {
               "id": "sleep",
               "title": "Sleep",
@@ -252,7 +314,7 @@
         },
         "7D": {
           "score": 78,
-          "subtitle": "10 Nov - 16 Nov",
+          "date": "10 Nov - 16 Nov",
           "averageLabel": "Daily Avg.",
           "history": [
             {
@@ -316,7 +378,7 @@
         },
         "30D": {
           "score": 76,
-          "subtitle": "Past 30 days",
+          "date": "Past 30 days",
           "averageLabel": "Daily Avg.",
           "history": [
             {
@@ -368,7 +430,7 @@
         },
         "1Y": {
           "score": 75,
-          "subtitle": "2024",
+          "date": "2024",
           "averageLabel": "Daily Avg.",
           "history": [
             {
@@ -424,38 +486,13 @@
       "id": 2,
       "title": "Activity",
       "about": "Activity score tracks how much you moved compared to your baseline.",
-      "metricInfo": [
-        {
-          "id": "active_points",
-          "title": "Active Points",
-          "description": "Points for time spent moving at different intensities.",
-          "icon": "sparkles"
-        },
-        {
-          "id": "steps",
-          "title": "Steps",
-          "description": "Total steps captured for the time window.",
-          "icon": "walk"
-        },
-        {
-          "id": "calories",
-          "title": "Active Calories",
-          "description": "Calories burned through movement and exercise.",
-          "icon": "flame_outline"
-        },
-        {
-          "id": "move_hours",
-          "title": "Move Hours",
-          "description": "Hours with meaningful movement.",
-          "icon": "clock"
-        }
-      ],
+      "color": "#FF7043",
       "timeframes": {
         "1D": {
           "score": 66,
-          "subtitle": "16 Nov",
+          "date": "16 Nov",
           "history": [],
-          "metrics": [
+          "mainMetrics": [
             {
               "id": "active_points",
               "title": "Active Points",
@@ -473,12 +510,38 @@
               "icon": "walk"
             },
             {
+              "id": "move_hours",
+              "title": "Move Hours",
+              "displayValue": "3 h",
+              "unit": "h",
+              "value": 48,
+              "icon": "clock"
+            },
+            {
               "id": "calories",
               "title": "Active Calories",
               "displayValue": "430 kcal",
               "unit": "kcal",
               "value": 48,
               "icon": "flame_outline"
+            }
+          ],
+          "infoMetrics": [
+            {
+              "id": "active_points",
+              "title": "Active Points",
+              "displayValue": "19 pts",
+              "unit": "pts",
+              "value": 65,
+              "icon": "sparkles"
+            },
+            {
+              "id": "steps",
+              "title": "Steps",
+              "displayValue": "1852",
+              "unit": "steps",
+              "value": 26,
+              "icon": "walk"
             },
             {
               "id": "move_hours",
@@ -495,7 +558,7 @@
         },
         "7D": {
           "score": 64,
-          "subtitle": "10 Nov - 16 Nov",
+          "date": "10 Nov - 16 Nov",
           "averageLabel": "Daily Avg.",
           "history": [
             {
@@ -567,7 +630,7 @@
         },
         "30D": {
           "score": 63,
-          "subtitle": "Past 30 days",
+          "date": "Past 30 days",
           "averageLabel": "Daily Avg.",
           "history": [
             {
@@ -627,7 +690,7 @@
         },
         "1Y": {
           "score": 65,
-          "subtitle": "2024",
+          "date": "2024",
           "averageLabel": "Daily Avg.",
           "history": [
             {

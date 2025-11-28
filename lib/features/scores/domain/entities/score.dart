@@ -52,28 +52,31 @@ class Metric extends Equatable {
 
 class ScoreTimeframeData extends Equatable {
   final int score;
-  final String subtitle;
+  final String date;
   final String? averageLabel;
   final List<HistoryPoint> history;
-  final List<Metric> metrics;
+  final List<Metric> mainMetrics;
+  final List<Metric> infoMetrics;
   final List<String> insights;
 
   const ScoreTimeframeData({
     required this.score,
-    required this.subtitle,
+    required this.date,
     this.averageLabel,
     required this.history,
-    required this.metrics,
+    required this.mainMetrics,
+    required this.infoMetrics,
     required this.insights,
   });
 
   @override
   List<Object?> get props => [
     score,
-    subtitle,
+    date,
     averageLabel,
     history,
-    metrics,
+    mainMetrics,
+    infoMetrics,
     insights,
   ];
 }
@@ -82,19 +85,25 @@ class Score extends Equatable {
   final int id;
   final String title;
   final String about;
+  final int accentColor;
   final Map<Timeframe, ScoreTimeframeData> timeframes;
-  final List<MetricDefinition> metricInfo;
 
   const Score({
     required this.id,
     required this.title,
     required this.about,
+    required this.accentColor,
     required this.timeframes,
-    required this.metricInfo,
   });
 
   ScoreTimeframeData? dataFor(Timeframe timeframe) => timeframes[timeframe];
 
   @override
-  List<Object?> get props => [id, title, about, timeframes, metricInfo];
+  List<Object?> get props => [
+    id,
+    title,
+    about,
+    accentColor,
+    timeframes,
+  ];
 }

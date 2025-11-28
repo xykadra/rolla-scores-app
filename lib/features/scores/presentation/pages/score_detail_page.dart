@@ -6,6 +6,7 @@ import '../../../../core/widgets/loading_skeleton.dart';
 import '../../domain/entities/score.dart';
 import '../../domain/entities/timeframe.dart';
 import '../cubit/score_detail_cubit.dart';
+import 'score_info_sheet.dart';
 import '../widgets/metric_tile.dart';
 import '../widgets/score_gauge.dart';
 import '../widgets/score_history_chart.dart';
@@ -74,8 +75,10 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
   Widget _buildContent(BuildContext context, ScoreDetailState state) {
     final score = state.score!;
     final data = score.dataFor(state.timeframe);
+    final filteredMetrics = _filterMetricsForScore(score, data?.mainMetrics ?? []);
+    final accentColor = Color(score.accentColor);
     final title =
-        state.timeframe == Timeframe.sevenDays ? 'History' : score.title;
+        state.timeframe == Timeframe.sevenDays ? 'History' : '${score.title} Score';
 
     if (data == null) {
       return const Center(child: Text('No data for timeframe.'));
@@ -97,7 +100,7 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
                 selected: state.timeframe,
                 onChanged: context.read<ScoreDetailCubit>().changeTimeframe,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -108,8 +111,8 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
                         style: CupertinoTheme.of(
                           context,
                         ).textTheme.textStyle.copyWith(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                       SizedBox(width: 8),
@@ -117,7 +120,13 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
                           ? CupertinoButton(
                             minimumSize: Size(0, 0),
                             padding: EdgeInsets.zero,
-                            onPressed: () {},
+                            onPressed:
+                                () => _openInfoSheet(
+                                  context: context,
+                                  score: score,
+                                  data: data,
+                                  timeframe: state.timeframe,
+                                ),
                             child: Icon(
                               CupertinoIcons.question_circle_fill,
                               color: CupertinoColors.systemGrey,
@@ -129,23 +138,34 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
                   ),
                   Row(
                     children: [
-                      Icon(CupertinoIcons.chevron_back, size: 18),
+                      Icon(
+                        CupertinoIcons.chevron_back,
+                        size: 18,
+                        color: CupertinoColors.systemGrey,
+                      ),
                       SizedBox(width: 4),
                       Text(
-                        data.subtitle,
+                        data.date,
                         style: CupertinoTheme.of(
                           context,
                         ).textTheme.textStyle.copyWith(color: Colors.grey),
                       ),
                       SizedBox(width: 4),
-                      Icon(CupertinoIcons.chevron_forward, size: 18),
+                      Icon(
+                        CupertinoIcons.chevron_forward,
+                        size: 18,
+                        color: CupertinoColors.systemGrey4,
+                      ),
                     ],
                   ),
                 ],
               ),
               const SizedBox(height: 24),
               if (state.timeframe == Timeframe.oneDay)
-                ScoreGauge(score: data.score, color: Colors.green)
+                Padding(
+                  padding: const EdgeInsets.only(top: 22.0),
+                  child: ScoreGauge(score: data.score, color: accentColor),
+                )
               else if (data.history.isNotEmpty)
                 ScoreHistoryChart(
                   values:
@@ -153,7 +173,7 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
                           .map((item) => item.value.toDouble())
                           .toList(),
                   labels: data.history.map((item) => item.label).toList(),
-                  color: Colors.green,
+                  color: accentColor,
                   timeframe: state.timeframe,
                 )
               else
@@ -175,7 +195,7 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
               const SizedBox(height: 8),
               Column(
                 children:
-                    data.metrics
+                    filteredMetrics
                         .map((metric) => MetricTile(metric: metric))
                         .toList(),
               ),
@@ -184,15 +204,54 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
               const SizedBox(height: 8),
               Text(
                 score.about,
-                style: CupertinoTheme.of(
-                  context,
-                ).textTheme.textStyle.copyWith(fontSize: 15),
+                style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             ]),
           ),
         ),
       ],
     );
+  }
+
+  void _openInfoSheet({
+    required BuildContext context,
+    required Score score,
+    required ScoreTimeframeData data,
+    required Timeframe timeframe,
+  }) {
+    Navigator.of(context).push(
+      CupertinoSheetRoute<void>(
+        builder:
+            (BuildContext context) => ScoreInfoSheet(
+              score: score,
+              data: data,
+              timeframe: timeframe,
+              metrics: _filterMetricsForScore(score, data.infoMetrics),
+              accentColor: Color(score.accentColor),
+            ),
+      ),
+    );
+  }
+
+  List<Metric> _filterMetricsForScore(Score score, List<Metric> metrics) {
+    const groups = {
+      'activity': ['active_points', 'steps', 'calories', 'move_hours'],
+      'readiness': ['sleep', 'resting_hr', 'hrv'],
+      'health score': ['readiness', 'activity'],
+    };
+
+    final key = score.title.toLowerCase();
+    final allowed = groups[key];
+    if (allowed == null) return metrics;
+
+    final allowedSet = allowed.toSet();
+    final filtered =
+        metrics.where((metric) => allowedSet.contains(metric.id)).toList();
+
+    return filtered.isNotEmpty ? filtered : metrics;
   }
 }
 
@@ -210,8 +269,8 @@ class _SectionTitle extends StatelessWidget {
         Text(
           title,
           style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
           ),
         ),
         if (trailing != null && trailing!.isNotEmpty)
