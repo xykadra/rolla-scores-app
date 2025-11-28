@@ -17,7 +17,8 @@
               "displayValue": "83",
               "unit": "",
               "value": 83,
-              "icon": "bolt"
+              "icon": "bolt",
+              "showProgress": true
             },
             {
               "id": "activity",
@@ -25,7 +26,8 @@
               "displayValue": "66",
               "unit": "",
               "value": 66,
-              "icon": "flame"
+              "icon": "flame",
+              "showProgress": true
             }
           ],
           "infoMetrics": [
@@ -263,7 +265,8 @@
               "displayValue": "8 h 40 m",
               "unit": "h",
               "value": 100,
-              "icon": "moon"
+              "icon": "moon",
+              "showProgress": true
             },
             {
               "id": "resting_hr",
@@ -271,7 +274,8 @@
               "displayValue": "51 bpm",
               "unit": "bpm",
               "value": 84,
-              "icon": "heart"
+              "icon": "heart",
+              "showProgress": true
             },
             {
               "id": "hrv",
@@ -279,7 +283,8 @@
               "displayValue": "39 ms",
               "unit": "ms",
               "value": 66,
-              "icon": "waveform"
+              "icon": "waveform",
+              "showProgress": true
             }
           ],
           "infoMetrics": [
@@ -499,7 +504,8 @@
               "displayValue": "19 pts",
               "unit": "pts",
               "value": 65,
-              "icon": "sparkles"
+              "icon": "sparkles",
+              "showProgress": true
             },
             {
               "id": "steps",
@@ -507,7 +513,8 @@
               "displayValue": "1852",
               "unit": "steps",
               "value": 26,
-              "icon": "walk"
+              "icon": "walk",
+              "showProgress": true
             },
             {
               "id": "move_hours",
@@ -515,7 +522,8 @@
               "displayValue": "3 h",
               "unit": "h",
               "value": 48,
-              "icon": "clock"
+              "icon": "clock",
+              "showProgress": true
             },
             {
               "id": "calories",
@@ -523,7 +531,8 @@
               "displayValue": "430 kcal",
               "unit": "kcal",
               "value": 48,
-              "icon": "flame_outline"
+              "icon": "flame_outline",
+              "showProgress": false
             }
           ],
           "infoMetrics": [

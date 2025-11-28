@@ -67,10 +67,11 @@ class MetricTile extends StatelessWidget {
                 ],
               ),
               Spacer(flex: 3,),
+              metric.showProgress?
               _CupertinoProgress(
                 value: metric.hasData ? metric.value / 100 : 0,
                 color: color,
-              ),
+              ): SizedBox.shrink(),
             ],
           ),
         ),

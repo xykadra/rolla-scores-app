@@ -63,6 +63,7 @@ class MetricModel extends Metric {
     required super.displayValue,
     required super.unit,
     required super.value,
+    required super.showProgress,
     super.hasData,
     super.icon,
   });
@@ -76,6 +77,7 @@ class MetricModel extends Metric {
       value: json['value'] as int? ?? 0,
       hasData: json['displayValue'] != null,
       icon: (json['icon'] as String?) ?? (json['id'] as String?) ?? '',
+      showProgress: json['showProgress'] as bool? ?? false,
     );
   }
 }

@@ -27,6 +27,7 @@ class Metric extends Equatable {
   final int value;
   final bool hasData;
   final String icon;
+  final bool showProgress;
 
   const Metric({
     required this.id,
@@ -36,6 +37,7 @@ class Metric extends Equatable {
     required this.value,
     this.hasData = true,
     this.icon = '',
+    this.showProgress = false,
   });
 
   @override
