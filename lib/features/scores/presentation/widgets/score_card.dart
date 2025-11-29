@@ -51,17 +51,14 @@ class ScoreCard extends StatelessWidget {
                 children: [
                   Text(
                     score.title,
-                    style: CupertinoTheme.of(context).textTheme.textStyle
-                        .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
+                    style: CupertinoTheme.of(context).textTheme.navTitleTextStyle,
                   ),
                 ],
               ),
             ),
             Icon(
               CupertinoIcons.chevron_right,
-              color: CupertinoTheme.of(
-                context,
-              ).textTheme.textStyle.color?.withValues(alpha: 0.4),
+              color: CupertinoColors.systemGrey,
             ),
           ],
         ),

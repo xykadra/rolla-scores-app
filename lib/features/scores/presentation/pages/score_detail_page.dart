@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/loading_skeleton.dart';
 import '../../domain/entities/score.dart';
 import '../../domain/entities/timeframe.dart';
@@ -39,14 +40,9 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
         middle: Text(widget.score.title),
       ),
       child: DecoratedBox(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-            colors: [
-              Color.fromRGBO(239, 239, 245, 1),
-              Color.fromRGBO(255, 255, 255, 1), // TODO: Adjust for dark more
-            ],
+        decoration: BoxDecoration(
+          gradient: AppTheme.scaffoldGradient(
+            CupertinoTheme.of(context).brightness ?? Brightness.light,
           ),
         ),
         child: SafeArea(
@@ -75,13 +71,42 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
   Widget _buildContent(BuildContext context, ScoreDetailState state) {
     final score = state.score!;
     final data = score.dataFor(state.timeframe);
-    final filteredMetrics = _filterMetricsForScore(score, data?.mainMetrics ?? []);
+    final filteredMetrics = _filterMetricsForScore(
+      score,
+      data?.mainMetrics ?? [],
+    );
     final accentColor = Color(score.accentColor);
     final title =
-        state.timeframe == Timeframe.sevenDays ? 'History' : '${score.title} Score';
+        state.timeframe != Timeframe.oneDay
+            ? 'History'
+            : '${score.title} Score';
 
     if (data == null) {
-      return const Center(child: Text('No data for timeframe.'));
+      return CustomScrollView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        slivers: [
+          CupertinoSliverRefreshControl(
+            onRefresh: () => context.read<ScoreDetailCubit>().refresh(),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate.fixed([
+                TimeframeSelector(
+                  selected: state.timeframe,
+                  onChanged: context.read<ScoreDetailCubit>().changeTimeframe,
+                ),
+                const SizedBox(height: 32),
+                _MissingTimeframeData(
+                  onRefresh: () => context.read<ScoreDetailCubit>().refresh(),
+                ),
+              ]),
+            ),
+          ),
+        ],
+      );
     }
 
     return CustomScrollView(
@@ -108,15 +133,13 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
                     children: [
                       Text(
                         title,
-                        style: CupertinoTheme.of(
-                          context,
-                        ).textTheme.textStyle.copyWith(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        style:
+                            CupertinoTheme.of(
+                              context,
+                            ).textTheme.navTitleTextStyle,
                       ),
                       SizedBox(width: 8),
-                      state.timeframe != Timeframe.sevenDays
+                      state.timeframe == Timeframe.oneDay
                           ? CupertinoButton(
                             minimumSize: Size(0, 0),
                             padding: EdgeInsets.zero,
@@ -151,10 +174,13 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
                         ).textTheme.textStyle.copyWith(color: Colors.grey),
                       ),
                       SizedBox(width: 4),
-                      Icon(
-                        CupertinoIcons.chevron_forward,
-                        size: 18,
-                        color: CupertinoColors.systemGrey4,
+                      Opacity(
+                        opacity: 0.5,
+                        child: Icon(
+                          CupertinoIcons.chevron_forward,
+                          size: 18,
+                          color: CupertinoColors.systemGrey,
+                        ),
                       ),
                     ],
                   ),
@@ -194,20 +220,20 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
               ),
               const SizedBox(height: 8),
               Column(
-                children:
-                    filteredMetrics
-                        .map((metric) => MetricTile(metric: metric))
-                        .toList(),
+                children: List.generate(
+                  filteredMetrics.length,
+                  (index) => MetricTile(
+                    metric: filteredMetrics[index],
+                    isLast: index == filteredMetrics.length - 1,
+                  ),
+                ),
               ),
               const SizedBox(height: 16),
               _SectionTitle(title: 'About'),
               const SizedBox(height: 8),
               Text(
                 score.about,
-                style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                ),
+                style: CupertinoTheme.of(context).textTheme.textStyle,
               ),
             ]),
           ),
@@ -268,19 +294,59 @@ class _SectionTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
-            fontSize: 20,
-            fontWeight: FontWeight.w400,
-          ),
+          style: CupertinoTheme.of(context).textTheme.navTitleTextStyle,
         ),
         if (trailing != null && trailing!.isNotEmpty)
           Text(
             trailing!,
-            style: CupertinoTheme.of(
-              context,
-            ).textTheme.textStyle.copyWith(fontSize: 13, color: Colors.grey),
+            style: CupertinoTheme.of(context).textTheme.actionTextStyle,
           ),
       ],
+    );
+  }
+}
+
+class _MissingTimeframeData extends StatelessWidget {
+  const _MissingTimeframeData({required this.onRefresh});
+
+  final VoidCallback onRefresh;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 16),
+      decoration: BoxDecoration(
+        color: Theme.of(
+          context,
+        ).colorScheme.surfaceContainerHighest.withValues(alpha: 0.4),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            CupertinoIcons.exclamationmark_triangle_fill,
+            color: CupertinoColors.systemGrey,
+            size: 28,
+          ),
+          const SizedBox(height: 12),
+          Text(
+            'Sorry, we could not find data for this timeframe.',
+            textAlign: TextAlign.center,
+            style: CupertinoTheme.of(context).textTheme.textStyle,
+          ),
+          const SizedBox(height: 16),
+          CupertinoButton.filled(
+            color: CupertinoColors.activeGreen,
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            onPressed: onRefresh,
+            child: const Text(
+              'Refresh',
+              style: TextStyle(color: CupertinoColors.white),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

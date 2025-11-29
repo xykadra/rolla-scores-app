@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rolla_scores_app/core/theme/app_theme.dart';
 
 import '../../domain/entities/score.dart';
 import '../../domain/entities/timeframe.dart';
@@ -24,12 +25,15 @@ class ScoreInfoSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = CupertinoTheme.of(context).textTheme.textStyle;
-
     return CupertinoPageScaffold(
       backgroundColor: CupertinoTheme.of(context).scaffoldBackgroundColor,
-      child: SafeArea(
-        child: SingleChildScrollView(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: AppTheme.scaffoldGradient(
+            CupertinoTheme.of(context).brightness ?? Brightness.light,
+          ),
+        ),
+        child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,15 +41,12 @@ class ScoreInfoSheet extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: Text(
-                      '${score.title} Score',
-                      style: textTheme.copyWith(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                  Text(
+                    '${score.title} Score',
+                    style:
+                        CupertinoTheme.of(
+                          context,
+                        ).textTheme.navLargeTitleTextStyle,
                   ),
                   CupertinoButton(
                     minimumSize: Size(0, 0),
@@ -63,10 +64,7 @@ class ScoreInfoSheet extends StatelessWidget {
               const SizedBox(height: 18),
               Text(
                 'Metrics',
-                style: textTheme.copyWith(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: CupertinoTheme.of(context).textTheme.navTitleTextStyle,
               ),
               const SizedBox(height: 10),
               Container(
@@ -86,10 +84,10 @@ class ScoreInfoSheet extends StatelessWidget {
                           children: [
                             Text(
                               metrics[i].title,
-                              style: textTheme.copyWith(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style:
+                                  CupertinoTheme.of(
+                                    context,
+                                  ).textTheme.tabLabelTextStyle,
                             ),
                             const SizedBox(width: 8),
                             Icon(
@@ -106,26 +104,32 @@ class ScoreInfoSheet extends StatelessWidget {
                             const Spacer(),
                             Text(
                               metrics[i].displayValue,
-                              style: textTheme.copyWith(
-                                fontSize: 16,
-                                color: Colors.grey,
-                              ),
+                              style: CupertinoTheme.of(context)
+                                  .textTheme
+                                  .tabLabelTextStyle
+                                  .copyWith(fontSize: 16, color: Colors.grey),
                             ),
                             const SizedBox(width: 10),
                             Row(
                               children: [
-                                const Icon(
+                                Icon(
                                   CupertinoIcons.star_fill,
                                   size: 18,
-                                  color: Colors.black87,
+                                  color:
+                                      MediaQuery.of(
+                                                context,
+                                              ).platformBrightness ==
+                                              Brightness.light
+                                          ? Colors.black87
+                                          : Colors.white,
                                 ),
                                 const SizedBox(width: 4),
                                 Text(
                                   metrics[i].value.toString(),
-                                  style: textTheme.copyWith(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                  ),
+                                  style:
+                                      CupertinoTheme.of(
+                                        context,
+                                      ).textTheme.tabLabelTextStyle.copyWith(),
                                 ),
                               ],
                             ),
@@ -135,8 +139,8 @@ class ScoreInfoSheet extends StatelessWidget {
                       if (i != metrics.length - 1)
                         const Divider(
                           height: 1,
-                          thickness: 1,
-                          color: CupertinoColors.systemGrey4,
+                          thickness: 0.5,
+                          color: CupertinoColors.systemGrey,
                         ),
                     ],
                   ],
@@ -145,15 +149,12 @@ class ScoreInfoSheet extends StatelessWidget {
               const SizedBox(height: 18),
               Text(
                 'How It Works?',
-                style: textTheme.copyWith(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w700,
-                ),
+                style: CupertinoTheme.of(context).textTheme.navTitleTextStyle,
               ),
               const SizedBox(height: 8),
               Text(
                 score.about,
-                style: textTheme.copyWith(fontSize: 15, color: Colors.black87),
+                style: CupertinoTheme.of(context).textTheme.textStyle,
               ),
             ],
           ),

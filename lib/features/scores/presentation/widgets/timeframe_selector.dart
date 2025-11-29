@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/timeframe.dart';
@@ -15,6 +16,13 @@ class TimeframeSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final frames = Timeframe.values;
+    final brightness = CupertinoTheme.of(context).brightness ?? Brightness.light;
+    final isDark = brightness == Brightness.dark;
+    final selectedColor = isDark ? Colors.white : Colors.black;
+    final unselectedColor =
+        isDark ? Colors.grey.shade400 : Colors.grey.shade600;
+    final dividerColor = isDark ? Colors.grey.shade700 : Colors.grey.shade300;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final itemWidth = constraints.maxWidth / frames.length;
@@ -42,8 +50,8 @@ class TimeframeSelector extends StatelessWidget {
                                   ? FontWeight.w700
                                   : FontWeight.w500,
                               color: frame == selected
-                                  ? Colors.black
-                                  : Colors.grey.shade600,
+                                  ? selectedColor
+                                  : unselectedColor,
                               fontSize: 15,
                               letterSpacing: 0.3,
                             ),
@@ -59,7 +67,7 @@ class TimeframeSelector extends StatelessWidget {
                 right: 0,
                 child: Container(
                   height: 1,
-                  color: Colors.grey.shade300,
+                  color: dividerColor,
                 ),
               ),
               AnimatedPositioned(
@@ -70,7 +78,7 @@ class TimeframeSelector extends StatelessWidget {
                 width: indicatorWidth,
                 child: Container(
                   height: 3,
-                  color: Colors.black,
+                  color: selectedColor,
                 ),
               ),
             ],

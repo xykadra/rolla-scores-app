@@ -98,7 +98,7 @@ class ScoreHistoryChart extends StatelessWidget {
                       barRods: [
                         BarChartRodData(
                           toY: entry.value,
-                          width: isYear ? 26 : 8,
+                          width: isYear ? 20 : 8,
                           color: color,
                           borderRadius: BorderRadius.circular(12),
                         ),

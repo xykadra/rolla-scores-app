@@ -14,7 +14,10 @@ class ScoreGauge extends StatelessWidget {
     final progress = score.clamp(0, 100) / 100;
     return Container(
       decoration: BoxDecoration(
-        color: CupertinoColors.white,
+        color:
+            MediaQuery.of(context).platformBrightness == Brightness.dark
+                ? Colors.black87
+                : Colors.white,
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
@@ -36,10 +39,9 @@ class ScoreGauge extends StatelessWidget {
           child: Center(
             child: Text(
               '$score',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-                color: Colors.black,
-              ),
+              style: CupertinoTheme.of(
+                context,
+              ).textTheme.navLargeTitleTextStyle.copyWith(fontSize: 36),
             ),
           ),
         ),

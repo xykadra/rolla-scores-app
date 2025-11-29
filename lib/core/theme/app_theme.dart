@@ -3,6 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
+  /// Shared scaffold gradients for light and dark modes.
+  static const LinearGradient lightScaffoldGradient = LinearGradient(
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+    colors: [
+      Color.fromRGBO(239, 239, 245, 1),
+      Color.fromRGBO(255, 255, 255, 1),
+    ],
+  );
+
+  static const LinearGradient darkScaffoldGradient = LinearGradient(
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+    colors: [Color.fromRGBO(32, 32, 36,1), Color.fromRGBO(18, 18, 18, 1)],
+  );
+
+  static LinearGradient scaffoldGradient(Brightness? brightness) {
+    return brightness == Brightness.dark
+        ? darkScaffoldGradient
+        : lightScaffoldGradient;
+  }
+
   static CupertinoThemeData lightTheme() {
     return CupertinoThemeData(
       brightness: Brightness.light,
@@ -11,15 +33,29 @@ class AppTheme {
       primaryContrastingColor: CupertinoColors.systemGrey4,
       barBackgroundColor: const Color(0xFFF8F9FA),
       textTheme: CupertinoTextThemeData(
+        tabLabelTextStyle: GoogleFonts.outfit(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: const Color.fromARGB(221, 0, 0, 0),
+        ),
         textStyle: GoogleFonts.outfit(
           fontSize: 16,
           fontWeight: FontWeight.w400,
-          color: Colors.black87,
+          color: const Color.fromARGB(221, 75, 75, 75),
         ),
         navTitleTextStyle: GoogleFonts.outfit(
           fontSize: 20,
           fontWeight: FontWeight.w400,
           color: Colors.black87,
+        ),
+        navLargeTitleTextStyle: GoogleFonts.outfit(
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
+          color: Colors.black87,
+        ),
+        actionTextStyle: GoogleFonts.outfit(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
         ),
       ),
     );
@@ -33,6 +69,11 @@ class AppTheme {
       primaryContrastingColor: CupertinoColors.systemGrey4,
       barBackgroundColor: const Color(0xFF121212),
       textTheme: CupertinoTextThemeData(
+        tabLabelTextStyle: GoogleFonts.outfit(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: const Color.fromARGB(221, 255, 255, 255),
+        ),
         textStyle: GoogleFonts.outfit(
           fontSize: 16,
           fontWeight: FontWeight.w400,
@@ -42,6 +83,15 @@ class AppTheme {
           fontSize: 20,
           fontWeight: FontWeight.w400,
           color: Colors.white,
+        ),
+        navLargeTitleTextStyle: GoogleFonts.outfit(
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
+        actionTextStyle: GoogleFonts.outfit(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
         ),
       ),
     );

@@ -7,8 +7,13 @@ import 'metric_icon_mapper.dart';
 
 class MetricTile extends StatelessWidget {
   final Metric metric;
+  final bool isLast;
 
-  const MetricTile({super.key, required this.metric});
+  const MetricTile({
+    super.key,
+    required this.metric,
+    this.isLast = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +31,15 @@ class MetricTile extends StatelessWidget {
     );
 
     return Padding(
-      padding: const EdgeInsets.only(
-        bottom: 12.0,
-      ), // TODO: All tiles should have padding except last one
+      padding: EdgeInsets.only(
+        bottom: isLast ? 0 : 12.0,
+      ),
       child: Container(
         height: 56,
         decoration: BoxDecoration(
           color: CupertinoTheme.of(context).barBackgroundColor,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: CupertinoColors.systemGrey4),
+          border: Border.all(color: CupertinoColors.systemGrey, width: 0.5),
         ),
         child: Padding(
           padding: const EdgeInsets.only(top: 12, left: 12, right: 12),
@@ -52,10 +57,7 @@ class MetricTile extends StatelessWidget {
                         metric.title,
                         style: CupertinoTheme.of(
                           context,
-                        ).textTheme.textStyle.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        ).textTheme.tabLabelTextStyle
                       ),
                     ],
                   ),

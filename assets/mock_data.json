@@ -182,14 +182,15 @@
               "value": 74
             }
           ],
-          "metrics": [
+          "mainMetrics": [
             {
               "id": "readiness",
               "title": "Readiness",
               "displayValue": "79",
               "unit": "",
               "value": 79,
-              "icon": "bolt"
+              "icon": "bolt",
+              "showProgress": true
             },
             {
               "id": "activity",
@@ -197,7 +198,8 @@
               "displayValue": "64",
               "unit": "",
               "value": 64,
-              "icon": "flame"
+              "icon": "flame",
+              "showProgress": true
             }
           ],
           "insights": [
@@ -226,14 +228,15 @@
               "value": 67
             }
           ],
-          "metrics": [
+          "mainMetrics": [
             {
               "id": "readiness",
               "title": "Readiness",
               "displayValue": "75",
               "unit": "",
               "value": 75,
-              "icon": "bolt"
+              "icon": "bolt",
+              "showProgress": true
             },
             {
               "id": "activity",
@@ -241,7 +244,8 @@
               "displayValue": "61",
               "unit": "",
               "value": 61,
-              "icon": "flame"
+              "icon": "flame",
+              "showProgress": true
             }
           ],
           "insights": [
@@ -408,14 +412,15 @@
               "value": 78
             }
           ],
-          "metrics": [
+          "mainMetrics": [
             {
               "id": "sleep",
               "title": "Sleep",
               "displayValue": "7 h 40 m",
               "unit": "h",
               "value": 86,
-              "icon": "moon"
+              "icon": "moon",
+              "showProgress": true
             },
             {
               "id": "resting_hr",
@@ -423,7 +428,8 @@
               "displayValue": "52 bpm",
               "unit": "bpm",
               "value": 80,
-              "icon": "heart"
+              "icon": "heart",
+              "showProgress": true
             },
             {
               "id": "hrv",
@@ -431,7 +437,8 @@
               "displayValue": "40 ms",
               "unit": "ms",
               "value": 69,
-              "icon": "waveform"
+              "icon": "waveform",
+              "showProgress": true
             }
           ],
           "insights": [
@@ -460,14 +467,15 @@
               "value": 75
             }
           ],
-          "metrics": [
+          "mainMetrics": [
             {
               "id": "sleep",
               "title": "Sleep",
               "displayValue": "7 h 25 m",
               "unit": "h",
               "value": 82,
-              "icon": "moon"
+              "icon": "moon",
+              "showProgress": true
             },
             {
               "id": "resting_hr",
@@ -475,7 +483,8 @@
               "displayValue": "53 bpm",
               "unit": "bpm",
               "value": 78,
-              "icon": "heart"
+              "icon": "heart",
+              "showProgress": true
             },
             {
               "id": "hrv",
@@ -483,7 +492,8 @@
               "displayValue": "38 ms",
               "unit": "ms",
               "value": 66,
-              "icon": "waveform"
+              "icon": "waveform",
+              "showProgress": true
             }
           ],
           "insights": [
@@ -637,7 +647,6 @@
               "title": "Active Calories",
               "displayValue": "430 kcal",
               "unit": "kcal",
-              "value": 48,
               "icon": "flame_outline",
               "showProgress": false
             }
@@ -646,66 +655,7 @@
             "Weekend slowdown lowered the average"
           ]
         },
-        "30D": {
-          "score": 63,
-          "date": "Past 30 days",
-          "averageLabel": "Daily Avg.",
-          "history": [
-            {
-              "label": "Week 1",
-              "value": 64
-            },
-            {
-              "label": "Week 2",
-              "value": 62
-            },
-            {
-              "label": "Week 3",
-              "value": 63
-            },
-            {
-              "label": "Week 4",
-              "value": 65
-            }
-          ],
-          "metrics": [
-            {
-              "id": "active_points",
-              "title": "Active Points",
-              "displayValue": "20 pts",
-              "unit": "pts",
-              "value": 64,
-              "icon": "sparkles"
-            },
-            {
-              "id": "steps",
-              "title": "Steps",
-              "displayValue": "5980",
-              "unit": "steps",
-              "value": 50,
-              "icon": "walk"
-            },
-            {
-              "id": "calories",
-              "title": "Active Calories",
-              "displayValue": "455 kcal",
-              "unit": "kcal",
-              "value": 52,
-              "icon": "flame_outline"
-            },
-            {
-              "id": "move_hours",
-              "title": "Move Hours",
-              "displayValue": "3.2 h",
-              "unit": "h",
-              "value": 49,
-              "icon": "clock"
-            }
-          ],
-          "insights": [
-            "Shorter walks reduced active calories"
-          ]
-        },
+      
         "1Y": {
           "score": 65,
           "date": "2024",
@@ -728,14 +678,15 @@
               "value": 66
             }
           ],
-          "metrics": [
+          "mainMetrics": [
             {
               "id": "active_points",
               "title": "Active Points",
               "displayValue": "22 pts",
               "unit": "pts",
               "value": 68,
-              "icon": "sparkles"
+              "icon": "sparkles",
+              "showProgress": true
             },
             {
               "id": "steps",
@@ -743,15 +694,8 @@
               "displayValue": "6200",
               "unit": "steps",
               "value": 53,
-              "icon": "walk"
-            },
-            {
-              "id": "calories",
-              "title": "Active Calories",
-              "displayValue": "480 kcal",
-              "unit": "kcal",
-              "value": 55,
-              "icon": "flame_outline"
+              "icon": "walk",
+              "showProgress": true
             },
             {
               "id": "move_hours",
@@ -759,7 +703,16 @@
               "displayValue": "3.6 h",
               "unit": "h",
               "value": 51,
-              "icon": "clock"
+              "icon": "clock",
+              "showProgress": true
+            },
+            {
+              "id": "calories",
+              "title": "Active Calories",
+              "displayValue": "12000 kcal",
+              "unit": "kcal",
+              "icon": "flame_outline",
+              "showProgress": false
             }
           ],
           "insights": [
