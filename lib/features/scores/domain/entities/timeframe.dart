@@ -39,7 +39,7 @@ extension TimeframeX on Timeframe {
 
 class HistoryPoint extends Equatable {
   final String label;
-  final int value;
+  final int? value;
 
   const HistoryPoint({required this.label, required this.value});
 

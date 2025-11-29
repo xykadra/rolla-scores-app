@@ -106,12 +106,13 @@ class ScoreTimeframeDataModel extends ScoreTimeframeData {
       history:
           historyJson
               .map(
-                (item) => HistoryPoint(
-                  label:
-                      ((item as Map<String, dynamic>)['label'] as String?) ??
-                      '',
-                  value: (item)['value'] as int? ?? 0,
-                ),
+                (item) {
+                  final map = item as Map<String, dynamic>;
+                  return HistoryPoint(
+                    label: (map['label'] as String?) ?? '',
+                    value: (map['value'] as num?)?.toInt(),
+                  );
+                },
               )
               .toList(),
       mainMetrics:

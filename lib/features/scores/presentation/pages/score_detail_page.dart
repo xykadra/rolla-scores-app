@@ -221,7 +221,8 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
                 ScoreHistoryChart(
                   values:
                       data.history
-                          .map((item) => item.value.toDouble())
+                          .map((item) => item.value?.toDouble())
+                          .whereType<double>()
                           .toList(),
                   labels: data.history.map((item) => item.label).toList(),
                   color: accentColor,
