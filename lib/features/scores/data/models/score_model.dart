@@ -97,7 +97,7 @@ class ScoreTimeframeDataModel extends ScoreTimeframeData {
     final historyJson = json['history'] as List<dynamic>? ?? [];
     final mainMetricsJson = json['mainMetrics'] as List<dynamic>? ?? [];
     final infoMetricsJson = json['infoMetrics'] as List<dynamic>? ?? [];
-    final insightsJson = json['insights'] as List<dynamic>? ?? [];
+    final insightsRaw = json['insights'];
 
     return ScoreTimeframeDataModel(
       score: json['score'] as int? ?? 0,
@@ -122,7 +122,13 @@ class ScoreTimeframeDataModel extends ScoreTimeframeData {
           infoMetricsJson
               .map((item) => MetricModel.fromJson(item as Map<String, dynamic>))
               .toList(),
-      insights: insightsJson.cast<String>(),
+      insights: () {
+        if (insightsRaw is List && insightsRaw.isNotEmpty) {
+          return insightsRaw.first as String? ?? '';
+        }
+        if (insightsRaw is String) return insightsRaw;
+        return '';
+      }(),
     );
   }
 }

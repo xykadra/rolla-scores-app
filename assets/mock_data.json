@@ -80,9 +80,7 @@
               "icon": "clock"
             }
           ],
-          "insights": [
-            "Lower HRV decreased readiness today"
-          ]
+          "insights": "Balanced metrics observed today"
         },
         "7D": {
           "score": 74,
@@ -156,9 +154,7 @@
               "icon": "flame"
             }
           ],
-          "insights": [
-            "Consistent activity maintained balance"
-          ]
+          "insights": "Consistent activity maintained balance"
         },
         "30D": {
           "score": 71,
@@ -202,9 +198,7 @@
               "showProgress": true
             }
           ],
-          "insights": [
-            "Activity trend softened this month"
-          ]
+          "insights": "Activity trend softened this month"
         },
         "1Y": {
           "score": 69,
@@ -248,9 +242,7 @@
               "showProgress": true
             }
           ],
-          "insights": [
-            "Sleep regularity improved yearly"
-          ]
+          "insights": "Sleep regularity improved yearly"
         }
       }
     },
@@ -319,9 +311,7 @@
               "icon": "waveform"
             }
           ],
-          "insights": [
-            "Lower HRV decreased readiness today"
-          ]
+          "insights": "Lower HRV decreased readiness today"
         },
         "7D": {
           "score": 78,
@@ -386,9 +376,7 @@
               "showProgress": true
             }
           ],
-          "insights": [
-            "Steady sleep maintained readiness"
-          ]
+          "insights": "Steady sleep maintained readiness"
         },
         "30D": {
           "score": 76,
@@ -441,9 +429,7 @@
               "showProgress": true
             }
           ],
-          "insights": [
-            "Sleep regularity is improving"
-          ]
+          "insights": "Sleep regularity is improving"
         },
         "1Y": {
           "score": 75,
@@ -452,7 +438,7 @@
           "history": [
             {
               "label": "Q1",
-              "value": 74
+              "value": null
             },
             {
               "label": "Q2",
@@ -496,9 +482,7 @@
               "showProgress": true
             }
           ],
-          "insights": [
-            "HRV trending up year over year"
-          ]
+          "insights": "HRV trending up year over year"
         }
       }
     },
@@ -576,9 +560,7 @@
               "icon": "clock"
             }
           ],
-          "insights": [
-            "Afternoon walk boosted activity"
-          ]
+          "insights": "Afternoon walk boosted activity"
         },
         "7D": {
           "score": 64,
@@ -651,9 +633,7 @@
               "showProgress": false
             }
           ],
-          "insights": [
-            "Weekend slowdown lowered the average"
-          ]
+          "insights": "Weekend slowdown lowered the average"
         },
       
         "1Y": {
@@ -715,9 +695,7 @@
               "showProgress": false
             }
           ],
-          "insights": [
-            "More consistent weekday walks"
-          ]
+          "insights": "More consistent weekday walks"
         }
       }
     }

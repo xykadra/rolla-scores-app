@@ -59,7 +59,7 @@ class ScoreTimeframeData extends Equatable {
   final List<HistoryPoint> history;
   final List<Metric> mainMetrics;
   final List<Metric> infoMetrics;
-  final List<String> insights;
+  final String insights;
 
   const ScoreTimeframeData({
     required this.score,

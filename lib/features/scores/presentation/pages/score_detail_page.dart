@@ -190,7 +190,32 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
               if (state.timeframe == Timeframe.oneDay)
                 Padding(
                   padding: const EdgeInsets.only(top: 22.0),
-                  child: ScoreGauge(score: data.score, color: accentColor),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 40.0),
+                        child: ScoreGauge(
+                          score: data.score,
+                          color: accentColor,
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxWidth: MediaQuery.of(context).size.width * 0.8,
+                          ),
+                          child: Text(
+                            score.timeframes[state.timeframe]!.insights,
+                            textAlign: TextAlign.center,
+                            style:
+                                CupertinoTheme.of(context).textTheme.textStyle,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 )
               else if (data.history.isNotEmpty)
                 ScoreHistoryChart(
@@ -211,7 +236,10 @@ class _ScoreDetailPageState extends State<ScoreDetailPage> {
                         .withValues(alpha: 0.4),
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: const Text('No history for this range'),
+                  child: const Text(
+                    'No history for this range',
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               const SizedBox(height: 24),
               _SectionTitle(

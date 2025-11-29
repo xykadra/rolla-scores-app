@@ -25,7 +25,7 @@ class ScoreHistoryChart extends StatelessWidget {
     const gridStops = [0.0, 25.0, 50.0, 75.0, 100.0];
 
     return SizedBox(
-      height: 162,
+      height: 192,
       child: BarChart(
         BarChartData(
           minY: 0,

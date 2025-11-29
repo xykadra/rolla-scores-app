@@ -34,8 +34,8 @@ class ScoreGauge extends StatelessWidget {
           background: CupertinoTheme.of(context).primaryContrastingColor,
         ),
         child: SizedBox(
-          height: 140,
-          width: 140,
+          height: 130,
+          width: 130,
           child: Center(
             child: Text(
               '$score',
