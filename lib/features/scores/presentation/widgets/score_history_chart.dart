@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../domain/entities/timeframe.dart';
 
 class ScoreHistoryChart extends StatelessWidget {
-  final List<double> values;
+  final List<double?> values;
   final List<String> labels;
   final Color color;
   final Timeframe timeframe;
@@ -23,6 +23,8 @@ class ScoreHistoryChart extends StatelessWidget {
         timeframe == Timeframe.oneYear || timeframe == Timeframe.thirtyDays;
     const gridInterval = 25.0;
     const gridStops = [0.0, 25.0, 50.0, 75.0, 100.0];
+    const missingBarHeight = 0.0;
+    final missingColor = Colors.grey.withValues(alpha: 0.35);
 
     return SizedBox(
       height: 192,
@@ -93,17 +95,21 @@ class ScoreHistoryChart extends StatelessWidget {
                   .asMap()
                   .entries
                   .map(
-                    (entry) => BarChartGroupData(
-                      x: entry.key,
-                      barRods: [
-                        BarChartRodData(
-                          toY: entry.value,
-                          width: isYear ? 20 : 8,
-                          color: color,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ],
-                    ),
+                    (entry) {
+                      final value = entry.value;
+                      final isMissing = value == null;
+                      return BarChartGroupData(
+                        x: entry.key,
+                        barRods: [
+                          BarChartRodData(
+                            toY: isMissing ? missingBarHeight : value,
+                            width: isYear ? 20 : 8,
+                            color: isMissing ? missingColor : color,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ],
+                      );
+                    },
                   )
                   .toList(),
         ),
