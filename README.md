@@ -26,9 +26,9 @@ flowchart TB
   J --> M[ScoreHistoryChart]
   J --> N["MetricTile / other widgets"]
   subgraph Core
-    O[AppTheme]
-    P[DI (get_it)]
-    Q[Failures]
+    O["AppTheme"]
+    P["DI (get_it)"]
+    Q["Failures"]
   end
   P --> D
   P --> G
